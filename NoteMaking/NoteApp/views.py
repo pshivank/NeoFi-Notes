@@ -54,9 +54,14 @@ def loginPage(request):
         
     return render(request , 'login.html')
 
+# logout view
+
 def Logout(request):
     auth.logout(request)
     return redirect('loginpage')
+
+
+# note page view where user can get after login 
     
 def notePage(request):
     return render(request , 'note.html')
