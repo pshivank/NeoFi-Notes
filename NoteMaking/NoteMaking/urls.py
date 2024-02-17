@@ -19,5 +19,7 @@ from django.urls import path , include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Included my mannual urls path here 
     path('',include('NoteApp.urls')),
 ]
