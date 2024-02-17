@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel = "stylesheet" href = "{% static 'note.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notemaking.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div class = "logoutbutton"><a href = "logout"><div>Logout </div></a></div>
+
+    <div class = "user-info">
+        <h1>Welcome {{user.username}}  !</h1>
+        <br>
+        <h1> Your email address is : {{user.email}} </h1>
+    </div>
+</body>

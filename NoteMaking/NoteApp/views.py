@@ -25,7 +25,7 @@ def signupPage(request):
                 return redirect('signuppage')
             
             else:
-                newUser = User.objects.create(username = username , email = email , password = password)
+                newUser = User.objects.create_user(username = username , email = email , password = password)
                 newUser.save()
                 messages.info(request," Registered Successfully.....")
                 return redirect('signuppage')
@@ -34,3 +34,30 @@ def signupPage(request):
             return redirect('signuppage')
 
     return render(request , 'signup.html')
+
+
+# creating loginpage view 
+
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username = username , password = password)
+
+        if user is not None:
+            auth.login(request,user)
+            return redirect('notes')
+        else:
+            messages.info(request ,"Invalid Credentials ....")
+            return redirect('loginpage')
+        
+    return render(request , 'login.html')
+
+def Logout(request):
+    auth.logout(request)
+    return redirect('loginpage')
+    
+def notePage(request):
+    return render(request , 'note.html')
+

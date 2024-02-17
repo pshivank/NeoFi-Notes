@@ -29,16 +29,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			{% endfor %}
 
 			<div class="agileits-top">
-				<form action="#" method="POST">
+				<form action="loginpage" method="post">
                     {% csrf_token %}
-					<input class="text" type="text" name="username" placeholder="Username" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text" type="text" name="username" placeholder="Username" required=""><br><br>
 					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="c_password" placeholder="Confirm Password" required="">
 					<br><br>
-					<input type="submit" value="Register">
+					<input type="submit" value="SignIn">
 				</form>
-				<p>Already have an Account? <a href="loginpage"> Login Now!</a></p>
+				<p>Dont have an Account? <a href="signupview"> SignUp Now!</a></p>
 			</div>
 		</div>
 		<!-- copyright -->
