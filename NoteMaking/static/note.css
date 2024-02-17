@@ -37,3 +37,25 @@ body{
     text-shadow: 1px 1px 8px red;
     font-size: 1.5rem;
 }
+
+.note-options{
+    display: flex;
+    /* border: 2px solid; */
+    height: 3rem;
+    
+}
+
+.note-options a{
+    text-decoration: none;
+    font-size: 1.8rem;
+    margin: 20px 50px;
+}
+
+.note-options a div{
+    /* border: 2px solid; */
+    box-shadow: 2px 2px 8px 2px black , 2px 2px 8px 2px black inset;
+    border-radius: 5px;
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+}

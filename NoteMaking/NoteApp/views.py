@@ -3,6 +3,7 @@ from django.contrib.auth.models import auth , User
 from django.contrib import messages
 from .models import *
 
+
 # Create your views here.
 
 # creating view for SignUp Page 
@@ -65,4 +66,21 @@ def Logout(request):
     
 def notePage(request):
     return render(request , 'note.html')
+
+
+# creation of notes
+def noteCreationPage(request):
+    if request.method == 'POST':
+        user = request.user
+        title = request.POST['title']
+        content = request.POST['content']
+
+        note = Note.objects.create( title = title , content = content , owner = user)
+        note.save()
+        messages.info(request,"Note created successfully...")
+        return redirect('create')
+    
+    return render(request,'notecreation.html')
+
+
 
