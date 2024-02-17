@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from django.contrib.auth.models import auth , User
 from django.contrib import messages
 from .models import *
@@ -81,6 +81,25 @@ def noteCreationPage(request):
         return redirect('create')
     
     return render(request,'notecreation.html')
+
+
+# get note view 
+
+def getnotePage(request):
+    obj = None
+    error_message = None
+
+    if request.method == 'POST':
+        try:
+            id_to_fetch = request.POST.get('id_to_fetch')
+            obj = get_object_or_404(Note, id=id_to_fetch)
+
+        except Note.DoesNotExist:
+            error_message = f"Object with ID {id_to_fetch} does not exist."
+        
+    return render(request,'getnote.html' , {'obj':obj , 'error_message':error_message})
+
+
 
 
 

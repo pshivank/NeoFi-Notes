@@ -8,5 +8,6 @@ urlpatterns = [
     path('notes',views.notePage , name='notes'),
     path('logout',views.Logout,name='logout'),
     path('create' , views.noteCreationPage,name='create'),
+    path('getnote',views.getnotePage , name='getnote'),
 
 ]

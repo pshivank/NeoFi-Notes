@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Your Model Detail</title>
+</head>
+<body>
+    <center>
+    <form method="post" action="{% url 'getnote' %}">
+        {% csrf_token %}
+        <label for="id_to_fetch">Enter ID:</label>
+        <input type="text" name="id_to_fetch" id="id_to_fetch">
+        <button type="submit">Fetch</button>
+    </form>
+    
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% elif obj %}
+            <h1>Title :   {{ obj.title }}</h1>
+            <p> Description :    {{ obj.content }}</p>
+        {% endif %}
+    </center>
+</body>
+</html>
