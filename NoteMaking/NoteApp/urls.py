@@ -9,5 +9,7 @@ urlpatterns = [
     path('logout',views.Logout,name='logout'),
     path('create' , views.noteCreationPage,name='create'),
     path('getnote',views.getnotePage , name='getnote'),
+    path('update',views.updatePage , name='update'),
+    path('update_note/<int:note_id>/', views.update_note_view, name='update_note'),
 
 ]

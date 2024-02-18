@@ -1,0 +1,9 @@
+<body style = "background-color:lightseagreen;">
+    <center>
+        <form method="post" action="{% url 'update_note' note.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Note</button>
+        </form>
+    </center>
+</body>

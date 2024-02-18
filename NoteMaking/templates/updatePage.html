@@ -1,10 +1,15 @@
 <html>
 <head>
     <title>Your Model Detail</title>
+    <style rel= "stylesheet">
+        body{
+            background-color:lightseagreen;
+        }
+    </style>
 </head>
 <body>
     <center>
-    <form method="post" action="{% url 'getnote' %}">
+    <form method="post" action="{% url 'update' %}">
         {% csrf_token %}
         <label for="id_to_fetch">Enter ID:</label>
         <input type="text" name="id_to_fetch" id="id_to_fetch">
@@ -16,6 +21,8 @@
         {% elif obj %}
             <h1>Title :  {{ obj.title }}</h1>
             <p> Description :    {{ obj.content }}</p>
+            <br><br>
+            <a href="{% url 'update_note' obj.id %} " style = "text-decoration:none; color:black ; font-weight:bold ; font-size : 1.5rem ; border:1px solid ; padding:10px ; border-radius:10px ; box-shadow: 2px 2px 8px 2px black , 2px 2px 8px 2px black inset;">Update Note</a>
         {% endif %}
     </center>
     

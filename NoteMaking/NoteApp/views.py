@@ -2,7 +2,7 @@ from django.shortcuts import render , redirect , get_object_or_404
 from django.contrib.auth.models import auth , User
 from django.contrib import messages
 from .models import *
-
+from .forms import UpdateNoteForm
 
 # Create your views here.
 
@@ -99,6 +99,40 @@ def getnotePage(request):
         
     return render(request,'getnote.html' , {'obj':obj , 'error_message':error_message})
 
+
+
+# Update page view
+def updatePage(request):
+    obj = None
+    error_message = None
+
+    if request.method == 'POST':
+        try:
+            id_to_fetch = request.POST.get('id_to_fetch')
+            obj = get_object_or_404(Note, id=id_to_fetch)
+
+        except Note.DoesNotExist:
+            error_message = f"Object with ID {id_to_fetch} does not exist."
+        
+    return render(request,'updatePage.html' , {'obj':obj , 'error_message':error_message})
+
+
+def update_note_view(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+
+    if request.method == 'POST':
+        form = UpdateNoteForm(request.POST, instance=note)
+        if form.is_valid():
+            form.save()
+            return redirect('getnote')  # Redirect to a success page
+    else:
+        form = UpdateNoteForm(instance=note)
+
+    return render(request, 'updatenote.html', {'form': form, 'note': note})
+
+
+
+    
 
 
 
